@@ -1,6 +1,6 @@
-package com.codestates.coffee;
+package com.codestates.coffee.dto;
 
-public class CoffePatchDto {
+public class CoffeePatchDto {
     private long coffeeId;
     private String korName;
     private String engName;

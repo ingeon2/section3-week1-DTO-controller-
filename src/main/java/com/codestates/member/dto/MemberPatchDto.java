@@ -1,4 +1,4 @@
-package com.codestates.member;
+package com.codestates.member.dto;
 
 import javax.validation.constraints.Pattern;
 

@@ -1,5 +1,6 @@
-package com.codestates;
+package com.codestates.validator;
 
+import com.codestates.validator.NotSpace;
 import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintValidator;

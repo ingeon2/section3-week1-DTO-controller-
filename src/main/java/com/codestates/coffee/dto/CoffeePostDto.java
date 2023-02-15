@@ -1,4 +1,4 @@
-package com.codestates.coffee;
+package com.codestates.coffee.dto;
 
 public class CoffeePostDto {
     private String engName;
