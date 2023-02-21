@@ -77,7 +77,7 @@ public class MemberController {
 
         List<Member> members = memberService.findMembers();
 
-        // 매퍼를 이용해서 List<Member>를 MemberResponseDto로 변환
+        // 매퍼를 이용해서 List<Member>를 MemberResponseDtos로 변환
         List<MemberResponseDto> response = mapper.membersToMemberResponseDtos(members);
 
         return new ResponseEntity<>(response, HttpStatus.OK);

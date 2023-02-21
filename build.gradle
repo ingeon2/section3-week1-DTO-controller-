@@ -26,6 +26,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc' //jdbc 사용할거다
+	runtimeOnly 'com.h2database:h2' //h2 데이터베이스 사용할거다
 }
 
 tasks.named('test') {

@@ -4,8 +4,9 @@ import com.codestates.coffee.dto.CoffeePatchDto;
 import com.codestates.coffee.dto.CoffeePostDto;
 import com.codestates.coffee.dto.CoffeeResponseDto;
 import com.codestates.coffee.entity.Coffee;
-import com.codestates.coffee.mapstruct.CoffeeMapper;
+import com.codestates.coffee.mapper.CoffeeMapper;
 import com.codestates.coffee.service.CoffeeService;
+import com.codestates.member.dto.MemberResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,10 +61,8 @@ public class CoffeeController {
     public ResponseEntity getCoffees() {
         List<Coffee> coffees = coffeeService.findCoffees();
 
-        // 매퍼를 이용해서 List<Member>를 MemberResponseDto로 변환
-        List<CoffeeResponseDto> response = coffees.stream()
-                .map(coffee -> coffeeMapper.coffeeToCoffeeResponseDto(coffee))
-                .collect(Collectors.toList());
+        // 매퍼를 이용해서 List<Coffee>를 CoffeeResponseDtos로 변환
+        List<CoffeeResponseDto> response = coffeeMapper.coffeesToCoffeeResponseDtos(coffees);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

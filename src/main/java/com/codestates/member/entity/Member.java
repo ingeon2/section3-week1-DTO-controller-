@@ -1,16 +1,15 @@
 package com.codestates.member.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 @Getter
 @Setter
-@NoArgsConstructor //파라미터가 없는 기본 생성자를 생성
-@AllArgsConstructor //모든 필드 값을 파라미터로 받는 생성자를 생성
 public class Member {
+    @Id // 얘가 프라이머리 키 라는 뜻, Member 클래스는 데이터베이스 테이블에서 MEMBER 테이블과 매핑
     long memberId;
+
     String email;
     String name;
     String phone;

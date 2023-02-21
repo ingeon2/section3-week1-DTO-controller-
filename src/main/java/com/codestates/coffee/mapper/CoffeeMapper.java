@@ -1,11 +1,9 @@
-package com.codestates.coffee.mapstruct;
+package com.codestates.coffee.mapper;
 
 import com.codestates.coffee.dto.CoffeePatchDto;
 import com.codestates.coffee.dto.CoffeePostDto;
 import com.codestates.coffee.dto.CoffeeResponseDto;
 import com.codestates.coffee.entity.Coffee;
-import com.codestates.member.dto.MemberPatchDto;
-import com.codestates.member.dto.MemberResponseDto;
 import org.mapstruct.Mapper;
 
 import java.util.List;
