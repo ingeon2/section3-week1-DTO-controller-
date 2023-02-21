@@ -8,11 +8,14 @@ import com.codestates.member.dto.MemberPatchDto;
 import com.codestates.member.dto.MemberResponseDto;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface CoffeeMapper {
     Coffee coffeePostDtoToCoffee(CoffeePostDto coffeePostDto);
     Coffee coffeePatchDtoToCoffee(CoffeePatchDto coffeePatchDto);
     CoffeeResponseDto coffeeToCoffeeResponseDto(Coffee coffee);
+    List<CoffeeResponseDto> coffeesToCoffeeResponseDtos(List<Coffee> coffees);
 }
 
 //MemberMapperImpl 클래스는 언제, 어떻게 생성될까요?

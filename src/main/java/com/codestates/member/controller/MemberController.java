@@ -6,19 +6,22 @@ import com.codestates.member.dto.MemberPatchDto;
 import com.codestates.member.dto.MemberPostDto;
 import com.codestates.member.dto.MemberResponseDto;
 import com.codestates.member.entity.Member;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import com.codestates.member.mapper.MemberMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController //@RestController 가 추가된 클래스는 애플리케이션 로딩 시, Spring Bean으로 등록
                 //@RestController 를 추가하면 해당 클래스가 REST API의 리소스(자원, Resource)를 처리하기 위한 API 엔드포인트로 동작함을 정의
-@RequestMapping(value = "/v5/members") //@RequestMapping 은 클라이언트의 요청과 클라이언트 요청을 처리하는 핸들러 메서드(Handler Method)를 매핑해주는 역할
+@RequestMapping(value = "/v6/members") //@RequestMapping 은 클라이언트의 요청과 클라이언트 요청을 처리하는 핸들러 메서드(Handler Method)를 매핑해주는 역할
+@Validated
+@Slf4j
 
 public class MemberController {
 
@@ -61,7 +64,7 @@ public class MemberController {
 
     // 한명 회원 정보 조회
     @GetMapping("/{member-id}")
-    public ResponseEntity getMember(@PathVariable("member-id") long memberId) {
+    public ResponseEntity getMember(@PathVariable("member-id") @Positive long memberId) {
         Member response = memberService.findMember(memberId);
 
         // 매퍼를 이용해서 Member를 MemberResponseDto로 변환
@@ -75,9 +78,7 @@ public class MemberController {
         List<Member> members = memberService.findMembers();
 
         // 매퍼를 이용해서 List<Member>를 MemberResponseDto로 변환
-        List<MemberResponseDto> response = members.stream()
-                        .map(member -> mapper.memberToMemberResponseDto(member))
-                        .collect(Collectors.toList());
+        List<MemberResponseDto> response = mapper.membersToMemberResponseDtos(members);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -89,8 +90,14 @@ public class MemberController {
         System.out.println("# delete member");
         memberService.deleteMember(memberId);
 
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    //@ExceptionHandler의 단점
+    // 1. 컨트롤러마다 애너테이션 처리해야함
+    // 2. 하나의 예외당 애너테이션 하나씩 작성  즉, 둘다 코드의 중복임.
+
+
 }
 
 //클라이언트의 요청을 전달 받아서 처리하기 위해서는 요청 핸들러 메서드(Request Handler Method)가 필요하다.
