@@ -35,3 +35,27 @@ Entity 클래스는 서비스 계층에서 데이터 액세스 계층과 연동�
 DTO 클래스를 사용하면 회원의 로그인 패스워드 같은 정보를 클라이언트에게 노출하지 않고, 원하는 정보만 제공할 수 있습니다.
 
 response, exception, advice 패키지 추가(예외처리 생성)
+
+
+
+핵심 포인트
+Controller 클래스 레벨에서 @ExceptionHandler 애너테이션을 사용하면 해당 Controller에서 발생하는 예외를 처리할 수 있다.
+필요한 Error 정보만 담을 수 있는 Error 전용 Response 객체를 사용하면 클라이언트에게 조금 더 친절한 에러 정보를 제공할 수 있다.
+@ExceptionHandler 애너테이션 방식은 Controller마다 동일하게 발생하는 예외 처리에 대한 중복 코드가 발생할 수 있다.
+@ExceptionHandler 애너테이션 방식은 다양한 유형의 예외를 처리하기에는 적절하지 않은 방식이다.
+
+@RestControllerAdvice 애너테이션을 추가한 클래스를 이용하면 예외 처리를 공통화
+
+핵심 포인트
+@RestControllerAdvice 애너테이션을 추가한 클래스를 이용하면 예외 처리를 공통화 할 수 있다.
+@RestControllerAdvice 애너테이션을 사용하면 JSON 형식의 데이터를 Response Body로 전송하기 위해 ResponseEntity로 래핑할 필요가 없다.
+@ResponseStatus 애너테이션으로 HTTP Status를 대신 표현할 수 있다.
+
+핵심 포인트
+체크 예외(Checked Exception)는 예외를 잡아서(catch) 체크한 후에 해당 예외를 복구 하든가 아니면 회피를 하든가 등의 어떤 구체적인 처리를 해야하는 예외이다.
+언체크 예외(Unchecked Exception)는 예외를 잡아서(catch) 해당 예외에 대한 어떤 처리를 할 필요가 없는 예외를 의미한다.
+RuntimeException을 상속한 예외는 모두 언체크 예외(Unchked Exception)이다.
+RuntimeException을 상속해서 개발자가 직접 사용자 정의 예외(Custom Exception)를 만들 수 있다.
+사용자 정의 예외(Custom Exception)를 정의해서 서비스 계층의 비즈니스 로직에서 발생하는 다양한 예외를 던질 수 있고, 던져진 예외는 Exception Advice에서 처리할 수 있다.
+@ResponseStatus 애너테이션은 고정된 예외를 처리할 경우에 사용할 수 있다.
+HttpStatus가 동적으로 변경되는 경우에는 ResponseEntity 를 사용한다.
