@@ -16,4 +16,5 @@ public class CoffeeResponseDto {
     private String engName;
 
     private int price;
+
 }

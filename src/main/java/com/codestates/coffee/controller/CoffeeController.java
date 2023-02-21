@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/v1/coffees")
+@RequestMapping("/v5/coffees")
 public class CoffeeController {
 
     private final CoffeeService coffeeService;
