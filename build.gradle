@@ -19,12 +19,12 @@ repositories {
 }
 
 dependencies {
+	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-validation' //유효성 검증(@Email 이런거)
 	implementation 'org.mapstruct:mapstruct:1.4.2.Final' //맵스트럭트
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final' //맵스트럭트
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final' //맵스트럭트 (매퍼 인터페이스만으로도 구체클래스 자동생성)
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc' //jdbc 사용할거다
 	runtimeOnly 'com.h2database:h2' //h2 데이터베이스 사용할거다

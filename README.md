@@ -154,3 +154,13 @@ Optional을 이용하면 데이터 검증에 대한 로직을 간결하게 작�
 복잡한 DTO 클래스와 엔티티 클래스의 매핑은 Mapper 인터페이스에 default 메서드를 직접 구현해서 개발자가 직접 매핑 로직을 작성해줄 수 있다.  
   
   
+레퍼런스 코드와 비교해서 찾아보니,  
+MemberMapper, CoffeeMapper 인터페이스에서 MapStruct(스프링 부트) 가 구체 클래스를 만들 때 문제가 생긴다는 것 캐치됨.  
+generate 패키지에서 해당 인터페이스들의 구현클래스를 지우고 다시 컴파일시 구현 클래스가 자동으로 만들어짐.  
+근데 또 CoffeeMapperImpl 클래스는 잘 만들어지는데 MemberMapperImpl 클래스는 잘 안만들어지더라고.  
+responsedto의 애너테이션은 맞았는데, build.gradle에서 문제가 있었던 모양.  
+build.gradle 에서 Lombok이 MapStruct보다 윗줄에 있어야 함.  
+이렇게 문제 해결 장장 5시간..  (https://velog.io/@gwichanlee/MapStruct-%EB%AF%B8%EC%9E%91%EB%8F%99%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0)
+
+에러 로그에서는 sql문제인것처럼 나왔지만, responsedto 클래스를 잘못 구현해(제어자) get set매서드를 사용해야 하는데 new 키워드를 사용하여 문제가 이렇게 됨.  
+제어자 똑바로 사용할것.  

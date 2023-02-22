@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-02-22T20:21:53+0900",
+    date = "2023-02-22T21:18:17+0900",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.17 (Azul Systems, Inc.)"
 )
 @Component
@@ -25,6 +25,11 @@ public class CoffeeMapperImpl implements CoffeeMapper {
 
         Coffee coffee = new Coffee();
 
+        coffee.setKorName( coffeePostDto.getKorName() );
+        coffee.setEngName( coffeePostDto.getEngName() );
+        coffee.setPrice( coffeePostDto.getPrice() );
+        coffee.setCoffeeCode( coffeePostDto.getCoffeeCode() );
+
         return coffee;
     }
 
@@ -36,6 +41,11 @@ public class CoffeeMapperImpl implements CoffeeMapper {
 
         Coffee coffee = new Coffee();
 
+        coffee.setCoffeeId( coffeePatchDto.getCoffeeId() );
+        coffee.setKorName( coffeePatchDto.getKorName() );
+        coffee.setEngName( coffeePatchDto.getEngName() );
+        coffee.setPrice( coffeePatchDto.getPrice() );
+
         return coffee;
     }
 
@@ -46,6 +56,11 @@ public class CoffeeMapperImpl implements CoffeeMapper {
         }
 
         CoffeeResponseDto coffeeResponseDto = new CoffeeResponseDto();
+
+        coffeeResponseDto.setCoffeeId( coffee.getCoffeeId() );
+        coffeeResponseDto.setKorName( coffee.getKorName() );
+        coffeeResponseDto.setEngName( coffee.getEngName() );
+        coffeeResponseDto.setPrice( coffee.getPrice() );
 
         return coffeeResponseDto;
     }
