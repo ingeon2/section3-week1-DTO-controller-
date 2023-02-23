@@ -64,7 +64,13 @@ HttpStatus가 동적으로 변경되는 경우에는 ResponseEntity 를 사용�
   
   
 순전히 db실험을 위해 hello_world 패키지 추가해줬다.  
-추가 이후 잘 작동되는것 확인하고, db를 이용하기 위해 수정사항 생겼다.  
+추가 이후 잘 작동되는것 확인하고, db를 이용하기 위해 수정사항 생겼다.
+  
+  
+여기부터는 jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc jdbc  
+SQL 쿼리문이 직접적으로 포함이 되는 방식은 과거부터 많이 사용하던 방식이고, 현재도 사용이 되고 있긴하지만 (마이바틱스, just SQL문으로만.)  
+Java 진영에서는 SQL 중심의 기술에서 객체(Object) 중심의 기술로 지속적으로 이전을 하고 있는 추세 (jdbc, jpa)  
+  
   
 주문(Order) 엔티티 클래스  
 Order 클래스와 Coffee 클래스는 N 대 N의 관계를 가지기 때문에 N 대 N의 관계를 1 대 N의 관계로 만들어주는 List<OrderCoffee>를 멤버 변수로 추가했습니다.  
