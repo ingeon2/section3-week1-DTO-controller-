@@ -37,6 +37,14 @@ DTO 클래스를 사용하면 회원의 로그인 패스워드 같은 정보를 
 response, exception, advice 패키지 추가(예외처리 생성)
 
 
+ResponseEntity  
+https://thalals.tistory.com/268  
+(ResponseEntity란, httpentity를 상속받는, 결과 데이터와 HTTP 상태 코드를 직접 제어할 수 있는 클래스이다.  
+ResponseEntity에는 사용자의  HttpRequest에 대한 응답 데이터가 포함된다. (HTTP status, header, body)  
+또한, HTTP 아케텍쳐 형태에 맞게 Response를 보내주는 것에도 의미가 있습니다.)  
+헤더에 관한 내용 (https://urclass.codestates.com/content/61e9d5e1-dab8-4184-b3eb-3eb9840c4290?playlist=2249)  
+
+
 
 핵심 포인트  
 Controller 클래스 레벨에서 @ExceptionHandler 애너테이션을 사용하면 해당 Controller에서 발생하는 예외를 처리할 수 있다.  
@@ -170,3 +178,6 @@ build.gradle 에서 Lombok이 MapStruct보다 윗줄에 있어야 함.
 
 에러 로그에서는 sql문제인것처럼 나왔지만, responsedto 클래스를 잘못 구현해(제어자) get set매서드를 사용해야 하는데 new 키워드를 사용하여 문제가 이렇게 됨.  
 제어자 똑바로 사용할것.  
+  
+  
+  

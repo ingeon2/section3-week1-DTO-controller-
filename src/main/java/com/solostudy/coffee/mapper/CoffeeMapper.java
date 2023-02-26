@@ -11,6 +11,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface
 
+
 CoffeeMapper {
     Coffee coffeePostDtoToCoffee(CoffeePostDto coffeePostDto);
     Coffee coffeePatchDtoToCoffee(CoffeePatchDto coffeePatchDto);

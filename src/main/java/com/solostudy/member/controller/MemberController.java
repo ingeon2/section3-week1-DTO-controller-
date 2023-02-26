@@ -21,7 +21,11 @@ import java.util.List;
 
 @RestController //@RestController 가 추가된 클래스는 애플리케이션 로딩 시, Spring Bean으로 등록
                 //@RestController 를 추가하면 해당 클래스가 REST API의 리소스(자원, Resource)를 처리하기 위한 API 엔드포인트로 동작함을 정의
+                // API가 서로다른 프로그램끼리 소통하는 통역서라면(원래 프로토콜의 집합),
+                // 엔드포인트는 통역할 내용을 찾기 위해 존재하는 URL (ENDPOINT는 API가 서버에서 리소스에 접근할 수 있도록 가능하게 하는 URL)
+
 @RequestMapping("/v10/members") //@RequestMapping 은 클라이언트의 요청과 클라이언트 요청을 처리하는 핸들러 메서드(Handler Method)를 매핑해주는 역할
+                                //@RequestMapping 은 Controller 클래스 레벨에 추가하여 클래스 전체에 사용되는 공통 URL(Base URL) 설정
 @Validated
 @Slf4j
 public class MemberController {
