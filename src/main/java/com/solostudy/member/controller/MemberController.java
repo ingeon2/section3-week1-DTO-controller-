@@ -1,6 +1,8 @@
 package com.solostudy.member.controller;
 
 
+import com.solostudy.member.dto.MemberPageDto;
+import com.solostudy.member.page.PageInfo;
 import com.solostudy.member.service.MemberService;
 import com.solostudy.member.dto.MemberPatchDto;
 import com.solostudy.member.dto.MemberPostDto;
@@ -8,6 +10,7 @@ import com.solostudy.member.dto.MemberResponseDto;
 import com.solostudy.member.entity.Member;
 import com.solostudy.utils.UriCreator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import com.solostudy.member.mapper.MemberMapper;
 import org.springframework.http.ResponseEntity;
@@ -79,14 +82,17 @@ public class MemberController {
 
     // 모든 회원 정보 조회
     @GetMapping
-    public ResponseEntity getMembers() {
+    public ResponseEntity getMembers(@RequestParam @Positive int page,
+                                     @RequestParam @Positive int size) {
 
-        List<Member> members = memberService.findMembers();
+        //서비스 계층에서 만든 findMembers 리턴값은 Page<Member>
+        Page<Member> memberPage = memberService.findMembers(page-1, size);
+        PageInfo pageInfo = new PageInfo(page, size, (int) memberPage.getTotalElements(), memberPage.getTotalPages());
 
-        // 매퍼를 이용해서 List<Member>를 MemberResponseDtos로 변환
+        List<Member> members = memberPage.getContent();
         List<MemberResponseDto> response = mapper.membersToMemberResponseDtos(members);
 
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(new MemberPageDto(response, pageInfo), HttpStatus.OK);
     }
 
     // 회원 정보 삭제

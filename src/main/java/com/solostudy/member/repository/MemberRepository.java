@@ -1,6 +1,8 @@
 package com.solostudy.member.repository;
 
 import com.solostudy.member.entity.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
@@ -18,4 +20,7 @@ public interface MemberRepository extends CrudRepository<Member, Long> {
 
     //만약 Member 엔티티 클래스에 firstName이라는 멤버 변수가 있고, 테이블에 있는 FIRST_NAME이라는 컬럼명과 매핑이 된다고 가정할 경우,
     // 쿼리메서드는 findByFirstName 이 되어야지 findByFIRST_NAME 이 되어서는 안됨. (Spring JDBC 입장에서는 엔티티 클래스를 바라보고 작업을 하기 때문)
+
+    Page<Member> findAllByOrderByMemberIdDesc(Pageable pageable);
+    //지알아서 매서드 이름 보고 내림차순, 즉 최신 데이터 순 으로 해줌.
 }

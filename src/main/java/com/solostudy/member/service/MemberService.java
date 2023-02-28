@@ -5,6 +5,8 @@ import com.solostudy.exception.BusinessLogicException;
 import com.solostudy.exception.ExceptionCode;
 import com.solostudy.member.entity.Member;
 import com.solostudy.member.repository.MemberRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,9 +47,13 @@ public class MemberService { //서비스 구현 로직.
     }
 
 
-    public List<Member> findMembers() {
+    public Page<Member> findMembers(int page, int size) {
         //모든 회원 정보 조회
-        return (List<Member>) memberRepository.findAll();
+        // Page<Member> 형태로 반환하는 멤버리파지토리의 showPageByMemberIdDesc 매서드 이용
+        // 기존에는 return (List<Member>) memberRepository.findAll(); 에다가 매개변수는 없었지만,
+        // 우린 페이지네이션 API를 사용하고, 매개변수를 추가하고, 반환값을 변경(List<멤> → Page<멤>)해주면 멤버리스트와 페이지까지 얻을 수 있음.
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return memberRepository.findAllByOrderByMemberIdDesc(pageRequest);
     }
 
     public void deleteMember(long memberId) {
