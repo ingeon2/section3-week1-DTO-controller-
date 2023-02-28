@@ -2,7 +2,7 @@ package com.solostudy.member.controller;
 
 
 import com.solostudy.member.dto.MemberPageDto;
-import com.solostudy.member.page.PageInfo;
+import com.solostudy.response.PageInfo;
 import com.solostudy.member.service.MemberService;
 import com.solostudy.member.dto.MemberPatchDto;
 import com.solostudy.member.dto.MemberPostDto;

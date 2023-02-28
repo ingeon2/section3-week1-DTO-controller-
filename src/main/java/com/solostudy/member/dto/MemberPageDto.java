@@ -1,6 +1,6 @@
 package com.solostudy.member.dto;
 
-import com.solostudy.member.page.PageInfo;
+import com.solostudy.response.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

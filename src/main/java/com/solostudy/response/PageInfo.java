@@ -1,4 +1,4 @@
-package com.solostudy.member.page;
+package com.solostudy.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
