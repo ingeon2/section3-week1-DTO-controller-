@@ -180,4 +180,4 @@ build.gradle 에서 Lombok이 MapStruct보다 윗줄에 있어야 함.
 제어자 똑바로 사용할것.  
   
   
-  
+마지막 readme 수정. jdbc 마무리 이후 jpa 방식. (매핑만 하는 것에서부터 실제 서비스로직 구현까지)
