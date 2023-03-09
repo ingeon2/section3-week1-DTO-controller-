@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 
-//Spring Data JDBC에서는 CrudRepository라는 인터페이스를 제공해주고 있으며,
+//Spring Data JDBC에서는 CrudRepository라는 인터페이스를 제공해주고 있으며 (기본적인 조회, 수정, 삭제)
 // 이 CrudRepository의 기능을 사용하기 위해서 MemberRepository가 CrudRepository를 상속
 public interface MemberRepository extends CrudRepository<Member, Long> {
     //바로 위 멤버는 멤버 엔티티클래스, Long은 멤버 엔티티클래스에서 @Id 에너테이션 붙은 멤버변수
